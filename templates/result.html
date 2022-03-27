@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<head></head>
+<body>
+	
+<html lang="en">
+<head>
+<div class = "container">
+<h1 style="font-family:Times New Roman; text-align:center;">Customer Sentiment on Products based on Reviews </h1>
+</div>
+
+
+<html>
+<head>
+<style>
+body  {
+  background-image: url("https://miro.medium.com/max/670/1*Df-gJ2MOIZmoDKPVnva39A.png");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+}
+</style>
+
+<body>
+<h3> Predicted Review: {{ prediction_text }} </h3>
+	{% if prediction_text==1 %}
+		<p> Positive Review </p>
+		<style>body{background-image: url("https://cdn.pixabay.com/photo/2019/02/19/19/45/thumbs-up-4007573_960_720.png");}</style>
+	{% else %}
+		<p> Negative Review </p>
+		<style>body{background-image: url("https://www.kindpng.com/picc/m/81-812148_animated-sad-face-emoji-hd-png-download.png");}</style>
+	{% endif %}
+<form method="POST" action="{{url_for('prediction')}}">
+<input type="submit"/>
+</form>
+</body>
+</html>
+
+
+

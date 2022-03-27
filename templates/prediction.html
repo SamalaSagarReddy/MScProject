@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+   {% if prediction_text is defined %}
+   $(".predict").show();
+   {% else %}
+   $(".predict").hide();
+   {% endif %}
+});
+</script>
+</head>
+<body>
+<html lang="en">
+<head>
+<div class = "container">
+<h1 style="font-family:Times New Roman; text-align:center;">Customer Sentiment on Products based on Reviews </h1>
+</div>
+
+
+<html>  
+
+<style>
+body  {
+  background-image: url("https://miro.medium.com/max/670/1*Df-gJ2MOIZmoDKPVnva39A.png");
+  background-repeat: no-repeat, repeat;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: contain;
+}
+</style>
+</head>
+<body>
+ <div class="login">
+  <h1>Prediction</h1>
+  <!-- <h1><dialog open>{{prediction_text}} </dialog></h1>
+ -->
+  <form action={{url_for('predict')}} method="post">
+    <input type="text" name=text placeholder="Text" required="required"/><br><br>
+    <!-- <select id="predict_review" name="text"> -->
+   <!-- <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button> -->  
+   <input type="submit" value="Predict" id="sendBtn">
+
+  <div class="predict">
+   <h3> Predicted Review: {{ prediction_text }} </h3>
+	{% if prediction_text==1 %}
+		<p> Positive Review </p>
+		<style>body{background-image: url("https://cdn.pixabay.com/photo/2019/02/19/19/45/thumbs-up-4007573_960_720.png");}</style>
+	{% elif prediction_text==0 %}
+		<p> Negative Review </p>
+		<style>body{background-image: url("https://www.kindpng.com/picc/m/81-812148_animated-sad-face-emoji-hd-png-download.png");}</style>
+	{% endif %}
+  <br>
+  </form>
+  </div>
+   </body>
+</html>
+  <!-- {{prediction_text}}
+ -->
